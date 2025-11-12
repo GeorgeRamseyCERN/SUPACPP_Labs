@@ -22,17 +22,20 @@ int main(){
 		
 	std::cin >> x >> y;
 	
-	//if(){
+	if (std::cin.fail()){
+		double x = 7.5;
+		double y = 3.4; 
+		printf("Invalid input: Setting vector as standard values: %f, %f \n", x, y);
 	
-	//}
-	//else{	 
-	//	double x = 7.5;
-	//	double y = 3.4; 
-	//}
+		double VectorLength = MagFinder(x, y);
 
-	double VectorLength = MagFinder(x, y);
+	}
 
-	printf("Hello World!\n The vector length is: %f \n", VectorLength);
+	else{double VectorLength = MagFinder(x, y);
+	
+		printf("Hello World!\n The vector length is: %f \n", VectorLength);
+	}
+
 	return 0;
 }
 
