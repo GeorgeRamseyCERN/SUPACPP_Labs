@@ -1,3 +1,6 @@
+# Running My Code:
+Makefile should include all executables, so simply make before running. Then run with ./HelloWorld and follow any terminal instructions
+
 # SUPA C++
 Lab exercises and development environment for SUPA C++ course, winter 2025
 
