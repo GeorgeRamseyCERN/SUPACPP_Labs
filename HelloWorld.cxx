@@ -5,21 +5,34 @@
 
 //declare variables globally:
 
-double x = 7.5;
-double y = 3.4; 
 
-double MagFinder(){
+double MagFinder(double x, double y){
 	
-	double VectorLength = sqrt(x**2 + y**2); 
+	double VectorLength = sqrt(x*x + y*y); 
 	return VectorLength;
 }
 
 int main(){
 	
 	//run magfinder
+	printf("Enter two space separated numbers for x and y for a vector length calc\n");
+	//entering two numbers
+	double x;
+	double y;
+		
+	std::cin >> x >> y;
 	
+	//if(){
+	
+	//}
+	//else{	 
+	//	double x = 7.5;
+	//	double y = 3.4; 
+	//}
 
-	printf("Hello World!\n The vector length is: %d", VectorLength);
+	double VectorLength = MagFinder(x, y);
+
+	printf("Hello World!\n The vector length is: %f \n", VectorLength);
 	return 0;
 }
 
