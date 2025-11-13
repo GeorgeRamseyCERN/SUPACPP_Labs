@@ -173,11 +173,11 @@ ReadResults FileHandler::ReadAllFiles(const std::string& dataPath, int nPrintRow
 			printf("Row %d: x = %.6f, y = %.6f, xerr = %.6f, yerr = %.6f\n", nRows, x, y, xerr, yerr);
         }
 		if (nRows >= nPrintRows){
-			printf("More prints requested than Rows, printing all");// non trivial to print first 5 in my
-		}							  							    // method as I open and act upon the
-																	// file row by row for efficiency so don't
-																 	// know nRows total ahead of time. I did
-																  	// not want a vector with all the data.  
+			printf("\rMore prints requested than Rows, printing all");// non trivial to print first 5 in my
+			printf("\n");			  							      // method as I open and act upon the
+		}															  // file row by row for efficiency so don't
+																 	  // know nRows total ahead of time. I did
+																  	  // not want a vector with all the data.  
 																	
         double magnitude = 0.0;
         double xPowy = 0.0;
@@ -220,7 +220,7 @@ ReadResults FileHandler::ReadAllFiles(const std::string& dataPath, int nPrintRow
     errorFile.close();
 	if (chi_calculated){
 		printf("Chi2 sqaured is %f\n", chi2);
-	}
+}
     return { nRows, sumX, sumY, sumXY, sumX2, sumY2, chi2 };
 }
 

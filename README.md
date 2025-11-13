@@ -1,5 +1,5 @@
 # Running My Code:
-Makefile should include all executables, so simply make before running. Then run with ./HelloWorld and follow any terminal instructions
+Makefile should include all executables, so simply cmake and  make before running. Then run with ./HelloWorld and follow any terminal instructions
 
 For Data Analysis Script, to run, executable is AnalyseData 
 
@@ -14,6 +14,8 @@ Example Usage:
 Will print all the data in the example file, prints chi2 calculation, and outputs a root file with branches for x,y,xerr,yerr,x^y,mag
 
 No extra arguments will output a root file with empty branches for uncalculated data
+
+Requires cmake install to make
 
 # SUPA C++
 Lab exercises and development environment for SUPA C++ course, winter 2025
