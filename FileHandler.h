@@ -1,7 +1,7 @@
 /*
     This is a class that handles the reading and merging of multiple files together 
     i.e the data and the errors together, and outputs to a root file as thats what
-	i'll be using in analysis, so good practice for me!
+	i'll be using in analysis, so good practice for me (rather than 3 random txt files)!
 	GR - 12/11/2025
 */
 

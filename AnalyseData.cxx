@@ -1,4 +1,3 @@
-// Analyse Data - Assignment 1 GR 12/11/2025
 
 #include <iostream>
 #include <cstdio>
