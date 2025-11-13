@@ -152,13 +152,12 @@ ReadResults FileHandler::ReadAllFiles(const std::string& dataPath, int nPrintRow
     double x, y, xerr, yerr;
     double sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0, sumY2 = 0, chi2 = 0;
     int nRows = 0;
-std::string lineData, lineError;
+	std::string lineData, lineError;
 
 
 	//printf("nPrintRows = %i\n", nPrintRows);
     while (std::getline(dataFile, lineData) && std::getline(errorFile,lineError)) {
 	//	printf("In while loop");
-		//skip header
 		if (lineData.empty() || lineData[0] == 'x') continue; //safety for other formats 
 		
 		// annoyingly in csv format 
@@ -176,7 +175,7 @@ std::string lineData, lineError;
         double magnitude = 0.0;
         double xPowy = 0.0;
 
-        if (Mag) {
+        if (Mag && !chi_calculated) {
             magnitude = CalcMagnitude(x,y);
         }
 
@@ -189,7 +188,7 @@ std::string lineData, lineError;
         }
 
         
-        if (XtoY) {
+        if (XtoY && !chi_calculated) {
             xPowy = RecursivePow(x,y);
         }
 
@@ -201,7 +200,10 @@ std::string lineData, lineError;
         }
 
         // Fill the TTree
-        FillTree(x, y, xerr, yerr, xPowy, magnitude);
+		if (!chi_calculated && nPrintRows == 0){
+			//printf("FT[%d]", nRows);
+        	FillTree(x, y, xerr, yerr, xPowy, magnitude);
+		}
         nRows++;
     }
 
