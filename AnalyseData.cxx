@@ -85,10 +85,10 @@ int main(int argc, char* argv[]){
     //printf("Processing data in directory: %s\n", inputDir.c_str());
     ReadResults results = fh.ReadAllFiles(inputDir, 0, p, q); // print in second loop to get nRows first
     printf("Processed %d rows from data\n", results.nRows);
-	printf("Loop 1\n");	
+	printf("Loop A\n");	
 
 	if (results.nRows < printNo && !fh.chi2){
-		printf("More prints than rows, will only print first 5, Loop 2\n");
+		printf("More prints than rows, will only print first 5, Loop B\n");
 		printNo = 5;
 		ReadResults resultsChi = fh.ReadAllFiles(inputDir, printNo, p, q);
 	}
@@ -96,7 +96,7 @@ int main(int argc, char* argv[]){
     // If chi2 flag is set, recalc with chi_calculated = true
     if(fh.chi2){
     	fh.SetChi_calculated(true);
-        printf("chi_calculated now true - Loop 3\n");
+        printf("chi_calculated now true - Loop C\n");
 		PQ param =  CalcPQ(results.nRows, results.sumXY, results.sumX, results.sumY, results.sumX2, results.sumY2); 
        	printf("For y = px+n LS fit:\n p = %.6f,\n q = %.6f,\n", param.p, param.q); 
         ReadResults resultsChi = fh.ReadAllFiles(inputDir, printNo, param.p, param.q);
