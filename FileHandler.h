@@ -152,7 +152,7 @@ ReadResults FileHandler::ReadAllFiles(const std::string& dataPath, int nPrintRow
     double x, y, xerr, yerr;
     double sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0, sumY2 = 0, chi2 = 0;
     int nRows = 0;
-	std::string lineData, lineError;
+std::string lineData, lineError;
 
 
 	//printf("nPrintRows = %i\n", nPrintRows);
@@ -172,12 +172,6 @@ ReadResults FileHandler::ReadAllFiles(const std::string& dataPath, int nPrintRow
         if (nRows < nPrintRows) {
 			printf("Row %d: x = %.6f, y = %.6f, xerr = %.6f, yerr = %.6f\n", nRows, x, y, xerr, yerr);
         }
-		if (nRows >= nPrintRows){
-			printf("\rMore prints requested than Rows, printing all");// non trivial to print first 5 in my
-			printf("\n");			  							      // method as I open and act upon the
-		}															  // file row by row for efficiency so don't
-																 	  // know nRows total ahead of time. I did
-																  	  // not want a vector with all the data.  
 																	
         double magnitude = 0.0;
         double xPowy = 0.0;
@@ -212,7 +206,7 @@ ReadResults FileHandler::ReadAllFiles(const std::string& dataPath, int nPrintRow
     }
 
     if (!chi_calculated) {
-		printf("chi_calculated false");
+		printf("chi_calculated false\n");
     	printf("sum x = %f, sum y = %f, sum xy = %f, sum x^2 = %f, sum y^2 = %f\n", sumX, sumY, sumXY, sumX2, sumY2);
 	}
 

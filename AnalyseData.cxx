@@ -88,12 +88,16 @@ int main(int argc, char* argv[]){
 
     // Loop over all input files
     printf("Processing data in directory: %s\n", inputDir.c_str());
-    ReadResults results = fh.ReadAllFiles(inputDir, printNo, p, q); // read first 5 rows
+    ReadResults results = fh.ReadAllFiles(inputDir, 0, p, q); // print in second loop to get nRows first
     printf("Processed %d rows from data\n", results.nRows);
-
+	
+	if (results.nRows < printNo){
+		printf("More prints than rows, will only print first 5\n");
+		printNo = 5;
+	}
+		
     // If chi2 flag is set, recalc with chi_calculated = true
     if(fh.chi2){
-		printNo = 0;
     	fh.SetChi_calculated(true);
         printf("chi_calculated now true\n");
 		PQ param =  CalcPQ(results.nRows, results.sumXY, results.sumX, results.sumY, results.sumX2, results.sumY2); 
