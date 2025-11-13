@@ -15,7 +15,7 @@ Will print all the data in the example file, prints chi2 calculation, and output
 
 No extra arguments will output a root file with empty branches for uncalculated data
 
-Requires cmake install to make
+Requires cmake install to make and requires root for tree production format 
 
 # SUPA C++
 Lab exercises and development environment for SUPA C++ course, winter 2025
