@@ -1,6 +1,20 @@
 # Running My Code:
 Makefile should include all executables, so simply make before running. Then run with ./HelloWorld and follow any terminal instructions
 
+For Data Analysis Script, to run, executable is AnalyseData 
+
+Requirement is a file path specified in command line with --in /path/to/data/and/error/directory
+The code will automatically 
+
+Options then take the form of: --chi2, --XtoY, --mag and --print[N] for calculating chi2, x^y, magnitude and printing N rows of the data 
+
+Example Usage:
+./AnalyseData --in Exercises/Lab1and2 --chi2 --XtoY --mag --print 26
+
+Will print all the data in the example file, prints chi2 calculation, and outputs a root file with branches for x,y,xerr,yerr,x^y,mag
+
+No extra arguments will output a root file with empty branches for uncalculated data
+
 # SUPA C++
 Lab exercises and development environment for SUPA C++ course, winter 2025
 

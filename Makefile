@@ -129,6 +129,43 @@ HelloWorld/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloWorld.dir/build.make CMakeFiles/HelloWorld.dir/build
 .PHONY : HelloWorld/fast
 
+#=============================================================================
+# Target rules for targets named AnalyseData
+
+# Build rule for target.
+AnalyseData: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 AnalyseData
+.PHONY : AnalyseData
+
+# fast build rule for target.
+AnalyseData/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AnalyseData.dir/build.make CMakeFiles/AnalyseData.dir/build
+.PHONY : AnalyseData/fast
+
+AnalyseData.o: AnalyseData.cxx.o
+.PHONY : AnalyseData.o
+
+# target to build an object file
+AnalyseData.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AnalyseData.dir/build.make CMakeFiles/AnalyseData.dir/AnalyseData.cxx.o
+.PHONY : AnalyseData.cxx.o
+
+AnalyseData.i: AnalyseData.cxx.i
+.PHONY : AnalyseData.i
+
+# target to preprocess a source file
+AnalyseData.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AnalyseData.dir/build.make CMakeFiles/AnalyseData.dir/AnalyseData.cxx.i
+.PHONY : AnalyseData.cxx.i
+
+AnalyseData.s: AnalyseData.cxx.s
+.PHONY : AnalyseData.s
+
+# target to generate assembly for a file
+AnalyseData.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AnalyseData.dir/build.make CMakeFiles/AnalyseData.dir/AnalyseData.cxx.s
+.PHONY : AnalyseData.cxx.s
+
 HelloWorld.o: HelloWorld.cxx.o
 .PHONY : HelloWorld.o
 
@@ -161,7 +198,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... AnalyseData"
 	@echo "... HelloWorld"
+	@echo "... AnalyseData.o"
+	@echo "... AnalyseData.i"
+	@echo "... AnalyseData.s"
 	@echo "... HelloWorld.o"
 	@echo "... HelloWorld.i"
 	@echo "... HelloWorld.s"
