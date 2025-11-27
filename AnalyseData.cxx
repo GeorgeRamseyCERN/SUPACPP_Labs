@@ -60,7 +60,7 @@ int main(int argc, char* argv[]){
 	}
 
 	if (inputDir.empty()) {
-        printf("Error: No input directory specified. Files found Automatically.\n Use '--in path/to/directory'\n Specify an output '--out path/to/output' \n Add options '--chi2', '--XtoY', '--mag' '--print No.' as desired");
+        printf("Error: No input directory specified. Files found Automatically.\n Use '--in path/to/directory'.\n Specify an output with '--out path/to/output'. \n Add options '--chi2', '--XtoY', '--mag' '--print No.' as desired.\n");
         return 1;
     }
 		
