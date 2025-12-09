@@ -1,6 +1,6 @@
-// A setof classes for fucntions hwich inherit from the FiniteFunctions class
+// A setof classes for fucntions hwich iherit from the FiniteFunctions class
 // GR 14/11/25
-
+// uses definitions from assignemnt sheet
 
 #pragma once
 #include "FiniteFunctions.h"
