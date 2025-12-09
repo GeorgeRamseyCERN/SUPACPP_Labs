@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include "gnuplot-iostream.h"
+#include <random>
 
 #pragma once //Replacement for IFNDEF
 
@@ -18,7 +19,16 @@ public:
   void setRangeMax(double RMax);
   void setOutfile(std::string outfile);
   void plotFunction(); //Plot the function using scanFunction
-  
+
+
+
+
+  //Adding metropolis method to be accessed by all derived classes too:
+  std::vector<double> metropolisSample(int Nsamples, double width = 0.3);
+  // will add teh implemetantion into FiniteFunctions.cxx
+ 
+
+ 
   //Plot the supplied data points (either provided data or points sampled from function) as a histogram using NBins
   void plotData(std::vector<double> &points, int NBins, bool isdata=true); //NB! use isdata flag to pick between data and sampled distributions
   virtual void printInfo(); //Dump parameter info about the current function (Overridable)

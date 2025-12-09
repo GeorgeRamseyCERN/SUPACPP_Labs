@@ -1,9 +1,14 @@
+//Added Integrator with Simpsons rule and metropolis algorithm with root's TRandom3
+//GR 09/12/25
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include "FiniteFunctions.h"
 #include <filesystem> //To check extensions in a nice way
-
+#include "TRandom3.h" // use root random generator 
+#include <algorithm>
+#include <cmath>
 #include "gnuplot-iostream.h" //Needed to produce plots (not part of the course) 
 
 using std::filesystem::path;
@@ -62,9 +67,42 @@ Integration by hand (output needed to normalise function when plotting)
 ###################
 */ 
 double FiniteFunction::integrate(int Ndiv){ //private
-  //ToDo write an integrator
-  return -99;  
+  //ToDo write an integrator - use simpsons rule, must have even divisons: w/3 (y_first + 4y_oddindex + 2y_evenindex + y_last) 
+
+/*  return -99;
+}*/
+  if(Ndiv <=0){Ndiv = 1000;} 
+  if(Ndiv % 2 == 1){++ Ndiv;}
+
+  printf("Using even, %d divisions for simpsons rule\n", Ndiv); 
+
+  double min = m_RMin; // keep m_ naming convention
+  double max = m_RMax;
+  double width = (max - min)/ Ndiv; 
+
+  if(width == 0){
+	return 0;
+  }
+  
+  double Sum = 0;
+  // add ends, this pointer 
+  Sum += (this -> callFunction(min)) + (this -> callFunction(max));
+  // add odds and evens 
+  for(int i = 1; i < Ndiv; ++i){
+	double x = min + width * i;
+	double fx = this -> callFunction(x);
+	if(i % 2 == 0){
+		Sum += 2 * fx;
+	}
+	else{
+		Sum += 4 * fx;
+	}
+  }
+
+  double simpIntegral = width/3 * Sum;
+  return simpIntegral;
 }
+
 double FiniteFunction::integral(int Ndiv) { //public
   if (Ndiv <= 0){
     std::cout << "Invalid number of divisions for integral, setting Ndiv to 1000" <<std::endl;
@@ -100,7 +138,7 @@ void FiniteFunction::printInfo(){
 }
 
 /*
-###################
+##################
 //Plotting
 ###################
 */
@@ -122,6 +160,42 @@ void FiniteFunction::plotData(std::vector<double> &points, int Nbins, bool isdat
     m_samples = this->makeHist(points,Nbins);
     m_plotsamplepoints = true;
   }
+}
+
+//adding metropolis 
+std::vector<double> FiniteFunction::metropolisSample(int Nsamples, double width)
+{
+    std::vector<double> samples;
+    samples.reserve(Nsamples);
+
+
+	TRandom3 randGen(0); // Seed 0 = random based on time
+
+    // random point in range
+    double x = randGen.Uniform(m_RMin, m_RMax);
+
+    for (int i = 0; i < Nsamples; i++)
+    {
+        // Propose new point from Gaussian centered at current x
+        double y = x + randGen.Gaus(0.0, width);
+
+        // Reject if outside valid domain
+        if (y < m_RMin || y > m_RMax)
+        {
+            samples.push_back(x);
+            continue;
+        }
+
+        double A = std::min(this->callFunction(y) / this->callFunction(x), 1.0);
+
+        // Accept or reject
+        if (randGen.Uniform(0.0, 1.0) < A)
+            x = y;
+
+        samples.push_back(x);
+    }
+
+    return samples;
 }
 
 
